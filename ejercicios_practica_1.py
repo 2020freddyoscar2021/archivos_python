@@ -10,6 +10,8 @@
 # Ejercicios con diccionarios
 
 import csv
+from operator import truediv
+from pickle import NONE
 
 
 def ej1():
@@ -33,6 +35,10 @@ def ej1():
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
 
+    stock = {'tornillo': 100, 'tuercas': 150, 'arandelas': 300}
+
+    print('el diccionario es: ', stock)
+    
 
 def ej2():
     print('Ejercicio con diccionarios 2º')
@@ -40,7 +46,7 @@ def ej2():
     # como una base de datos. Comenzaremos con un diccionario de stock
     # de nuestros productos en cero:
     
-    strock = {'tornillos': 0, 'tuercas': 0, 'arandelas': 0}
+    stock = {'tornillos': 0, 'tuercas': 0, 'arandelas': 0}
 
     # Paso 1:
     # Crear un bucle utilizando while que se ejecute de forma infinita
@@ -66,6 +72,28 @@ def ej2():
     # imprimir en pantalla con print el diccionario con el stock final
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
+
+    while True:
+        print('Que producto desea agregar al stock: \n(a)tornilllos \n(b)tuercas \n(c)arandelas o \nFIN (para salir) \ningresa valor:')
+        
+        k = str(input('llave:' ))
+        
+        if k == stock['tornillos'] or k == stock['tuercas'] or k == stock['arandelas']:
+            print('')
+        else:
+            print('Ingreso un stock no valido vuelva intentar con la lista dada')
+            exit()
+
+
+        if k == 'FIN':
+            break 
+        else:
+            print('Cuantos stock del producto', k, 'desea ingresar?: ')
+            v = int(input('Valor:'))
+            stock[k] += v
+
+    print('El total de stock es: ', stock)
+
 
 
 if __name__ == '__main__':
