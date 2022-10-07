@@ -10,6 +10,8 @@
 # Ejercicios con archivos
 
 import csv
+from fileinput import close
+from webbrowser import get
 
 
 def ej3():
@@ -28,6 +30,19 @@ def ej3():
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
     
+    csvfile = open(archivo, 'r') # r es modo lectura
+
+    data = list(csv.DictReader(csvfile))
+
+    cantidad = range(len(data))
+    suma_tornillos = 0
+
+    for v in cantidad:
+        suma_tornillos += int(data[v].get('tornillos'))
+    
+    print('La suma de tornilloses',suma_tornillos)
+
+    csvfile.close()
 
 
 def ej4():
@@ -48,6 +63,18 @@ def ej4():
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
 
+    csvfile = open(archivo, 'r') # r es modo lectura
+
+    data = list(csv.DictReader(csvfile))     
+    contar_ambiente = 0
+    cantidad = range(len(data))
+
+    for v in cantidad:
+        ambiente = data[v].get('ambientes')
+        if ambiente =='3' or ambiente =='2':
+            contar_ambiente = 1 + contar_ambiente
+
+    print("La cantidad de ambiestes con 2 y 3 domritorios es: ", contar_ambiente)
 
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")
